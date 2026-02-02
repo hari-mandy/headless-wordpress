@@ -12,6 +12,7 @@
     "@apollo/client": "^3.13.9",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@faustwp/blocks": "^6.1.5",
     "@mui/icons-material": "^7.3.2",
     "@mui/material": "^7.3.2",
     "@tailwindcss/typography": "^0.5.16",

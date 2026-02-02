@@ -14,16 +14,16 @@ export default function RootLayout({
 }) {
 
   // Next.js _app.tsx or a layout component
-  useEffect(() => {
-    (async () => {
-      const res = await fetch("http://headlesswordpress.local/wp-json/headless/v1/global-styles.css");
-      const css = await res.text();
-      const style = document.createElement('style');
-      style.setAttribute('data-wp-global-styles', 'true');
-      style.appendChild(document.createTextNode(css));
-      document.head.appendChild(style);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch("http://headlesswordpress.local/wp-content/uploads/theme-variables.css");
+  //     const css = await res.text();
+  //     const style = document.createElement('style');
+  //     style.setAttribute('data-wp-global-styles', 'true');
+  //     style.appendChild(document.createTextNode(css));
+  //     document.head.appendChild(style);
+  //   })();
+  // }, []);
 
 
   return (
@@ -32,29 +32,21 @@ export default function RootLayout({
       <body style={{ margin: 0, fontFamily: 'Arial, sans-serif' }}>
         <ApolloProvider client={client}>
           <AuthProvider>
-            <CartProvider
-              mode="payment"
-              cartMode="client-only"
-              stripe=''
-              currency="USD"
-              shouldPersist
-              successUrl={`${process.env.NEXT_PUBLIC_SITE_URL}/success`}
-              cancelUrl={`${process.env.NEXT_PUBLIC_SITE_URL}/cancel`}
-            >
               {children}
               <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
-            </CartProvider>
           </AuthProvider>
         </ApolloProvider>
-        {/* <script src="https://cdn.tailwindcss.com"></script> */}
         {/* Core WordPress styles */}
 
-        {/* <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/block-library/style.min.css" />
-        <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/block-library/theme.min.css" /> */}
+        <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/block-library/style.min.css" />
+        <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/block-library/theme.min.css" />
         
         {/* Editor specific styles */}
-        {/* <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/block-editor/style.min.css" />
-        <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/components/style.min.css" /> */}
+        <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/block-editor/style.min.css" />
+        <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dist/components/style.min.css" />
+
+        {/* wordpress Theme style variables */}
+        <link rel="stylesheet" href="http://headlesswordpress.local/wp-content/uploads/theme-variables.css" />
         
         {/* WordPress admin styles that affect blocks */}
         {/* <link rel="stylesheet" href="http://headlesswordpress.local/wp-includes/css/dashicons.min.css" /> */}
